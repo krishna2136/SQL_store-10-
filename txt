@@ -1,0 +1,10 @@
+### Steps to export and import data sql with bulk command
+
+## Create sql table format file
+bcp Students.dbo.Courses format nul -S .\sqlexpress -U sa -P 12345 -n -f Courses-n.fmt
+
+## Export sql table to data file 
+bcp Students.dbo.Courses out Courses.bcp -S .\sqlexpress -U sa -P 12345 -f Courses-n.fmt
+
+##Import Data from data file
+bcp Test.dbo.Courses in Courses.bcp -S .\sqlexpress -U sa -P 12345 -f Courses-n.fmt
